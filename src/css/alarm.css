@@ -1,0 +1,203 @@
+/* alarm.css */
+
+.alarm-box {
+  position: relative;
+  max-width: 400px;
+  height: 100%;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  animation-name: alarm-slide-in;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+
+  @media screen and (max-width: 540px) {
+    position: fixed;
+    top: 55px;
+    max-width: unset;
+    height: calc(100dvh - 55px);
+    border-radius: 0;
+  }
+}
+
+.alarm-scroll {
+  width: 100%;
+  height: 10px;
+  background: rgba(0, 0, 0, 0.1);
+  animation-name: alarm-fade-in;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in;
+}
+
+.alarm-scroll .progress {
+  height: 100%;
+  background-image: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+  border-radius: 5px;
+}
+
+.alarm-list {
+  padding: 30px;
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  animation-name: alarm-fade-in;
+  animation-duration: 0.6s;
+  animation-timing-function: ease-in;
+
+  @media screen and (max-width: 540px) {
+    padding-top: 0;
+    height: calc(100dvh - 65px);
+  }
+}
+
+.alarm-list > div + div {
+  margin-top: 15px;
+}
+
+.alarm-alert {
+  justify-content: center;
+  width: 340px;
+  background: rgba(0, 0, 0, 0.75);
+  text-align: center;
+}
+
+.alarm-alert h2 {
+  color: rgba(255, 48, 64, 1);
+}
+
+.alarm-alert h3 {
+  color: #fff;
+}
+
+.alarm-alert p {
+  color: #fff;
+}
+
+.alarm-division {
+  margin: 25px 0 15px 0;
+  padding: 0 0 5px 5px;
+  border-bottom: 2px solid #000;
+  border-radius: 5px;
+}
+
+.alarm-division:first-child {
+  margin-top: 15px;
+}
+
+.alarm-item {
+  padding: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: stretch;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.75);
+  border-radius: 15px;
+  color: #fff;
+
+  &:not(:has(.exclude:hover)):hover {
+    background-image: linear-gradient(to right, #667eea 0%, #764ba2 100%);
+  }
+
+  &:active {
+    filter: blur(1px);
+  }
+}
+
+.alarm-item > div:nth-child(1) {
+  width: 50px;
+  height: 50px;
+}
+
+.alarm-item .profile {
+  width: 50px;
+  height: 50px;
+}
+
+.alarm-item .exclude {
+  &:hover {
+    filter: drop-shadow(0 0 5px #fff) brightness(110%);
+  }
+
+  &:active {
+    filter: blur(1px);
+  }
+}
+
+.alarm-item .message {
+  margin-left: 15px;
+  flex-grow: 1;
+  font-size: 0.9rem;
+}
+
+.alarm-item .message .time {
+  margin-left: 5px;
+  font-style: italic;
+  font-size: 0.8rem;
+  color: var(--gray-bg);
+}
+
+.alarm-item .post {
+  margin-left: 15px;
+}
+
+.alarm-item .post img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+.alarm-item .follow,
+.alarm-item .reply {
+  margin-left: 5px;
+}
+
+.alarm-item .follow button,
+.alarm-item .reply button {
+  padding: 5px 10px;
+  background: var(--tikitaka-color);
+  border: none;
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  transition: none;
+}
+
+.alarm-item .reply button {
+  margin-left: 3px;
+  background: var(--time-color);
+}
+
+@keyframes alarm-slide-in {
+  0% {
+    padding: 0;
+    width: 0;
+  }
+
+  100% {
+    padding: 30px;
+    width: 100%;
+  }
+}
+
+@keyframes alarm-fade-in {
+  0% {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  50% {
+    display: block;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  100% {
+    visibility: visible;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,359 @@
+/* settings.css */
+.settings-box {
+  position: relative;
+  width: 400px;
+  height: 100%;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+
+  @media screen and (max-width: 540px) {
+    margin: 0;
+    position: fixed;
+    top: 55px;
+    width: 100dvw;
+    height: calc(100dvh - 55px);
+    border-radius: 0;
+  }
+}
+
+.settings-box-title {
+  padding: 30px;
+  height: 10%;
+  border-bottom: 2px solid var(--border-color);
+
+  @media screen and (max-width: 540px) {
+    display: none;
+  }
+}
+
+.settings-box-title .title {
+  font-size: 1.5rem;
+  color: #154acf;
+}
+
+.settings-box-content {
+  padding: 15px;
+  height: 90%;
+  position: relative;
+  overflow-y: scroll;
+
+  @media screen and (max-width: 540px) {
+    height: 100%;
+  }
+}
+
+.settings-box-content::-webkit-scrollbar {
+  display: none;
+}
+
+.settings-box-content .error-message {
+  padding: 6px 12px;
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  z-index: 10;
+  transform: translateX(-50%);
+  background: rgba(226, 49, 49, 0.75);
+  border-radius: 10px;
+  font-size: 0.9rem;
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  animation-name: slide-in;
+  animation-duration: 3s;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes slide-in {
+  0% {
+    top: -30px;
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  50% {
+    top: 30px;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  100% {
+    top: -30px;
+    visibility: hidden;
+    opacity: 0;
+  }
+}
+
+.settings-box-content .profile {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-edit {
+  margin: auto;
+  position: relative;
+  width: 250px;
+  height: 250px;
+  border: none;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.profile-edit .profile:hover + .cancle {
+  visibility: visible;
+  opacity: 1;
+}
+
+.profile-edit .cancle {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.1s all;
+}
+
+.profile-edit .cancle:hover {
+  visibility: visible;
+  opacity: 0.8;
+}
+
+.profile-edit .edit {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  width: 100%;
+  height: 30px;
+  background: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--tikitaka-color);
+  transition: 0.2s all ease-in;
+}
+
+.profile-edit .edit:hover {
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+}
+
+.settings-table {
+  margin: auto;
+  margin-top: 15px;
+  width: 375px;
+  border-collapse: separate;
+  border-spacing: 10px 15px;
+
+  @media screen and (max-width: 540px) {
+    width: 100%;
+    border-spacing: 5px 10px;
+  }
+}
+
+.settings-table .brand {
+  width: 30px;
+  border: none;
+  border-radius: 5px;
+}
+
+.settings-table input {
+  padding: 6px;
+  width: calc(100% - 50px);
+  font-size: 1rem;
+  border: 1px solid #aaa;
+}
+
+.settings-table .auth-code {
+  height: 65px;
+  animation-name: h-slide;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-in;
+  overflow: hidden;
+  border-spacing: 0;
+  transition: 0.3s all ease-in;
+}
+
+.settings-table .correct {
+  height: 35px;
+}
+
+@keyframes h-slide {
+  0% {
+    height: 0px;
+  }
+
+  100% {
+    height: 35px;
+  }
+}
+
+.settings-email-auth {
+  padding: 6px 12px;
+  position: relative;
+  width: 50px;
+  background: transparent;
+  border: none;
+  transition: none;
+}
+
+.settings-email-auth .active {
+  color: #278839 !important;
+}
+
+.active .balloon {
+  background: #296eff !important;
+}
+
+.active .balloon::after {
+  border-top-color: #296eff !important;
+}
+
+.settings-email-auth:disabled {
+  opacity: 1;
+  filter: none;
+}
+
+.settings-email-auth .balloon-container {
+  top: -55px;
+  right: -5px;
+  width: 140px;
+}
+
+.settings-email-auth .move {
+  top: -35px;
+  right: -52px;
+}
+
+.settings-email-auth .balloon {
+  background: #e23131;
+  word-break: keep-all;
+}
+
+.settings-email-auth .balloon::after {
+  border-top-color: #e23131;
+}
+
+.nick-message-container > td {
+  transition: 0.3s all ease-in;
+}
+
+.nick-message-container > td:nth-child(1) {
+  padding-bottom: 25px;
+}
+
+.nick-message-container > td:nth-child(2) {
+  border-bottom: 25px solid transparent;
+}
+
+.nick-message-container input {
+  outline: solid #e23131;
+}
+
+.nick-message {
+  padding: 6px;
+  position: absolute;
+  bottom: -31px;
+  left: 5px;
+  background: #e23131;
+  border-radius: 10px;
+  font-size: 0.7rem;
+  color: #fff;
+}
+
+.settings-confirm {
+  margin: auto;
+  margin-top: 30px;
+  width: 80%;
+  text-align: right;
+}
+
+.settings-confirm .button {
+  padding: 8px 16px;
+  background: transparent;
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: #fff;
+  transition: none;
+}
+
+.settings-confirm .button + .button {
+  margin-left: 5px;
+}
+
+.settings-confirm .confirm {
+  background: #278839;
+}
+
+.settings-confirm .confirm:disabled {
+  filter: brightness(95%);
+}
+
+.settings-confirm .cancle {
+  background: #30363d;
+}
+
+.calendar + .calendar {
+  margin-left: 5px;
+}
+
+.calendar-select {
+  padding: 6px 15px;
+  width: 65px;
+  background: rgba(0, 0, 0, 0.75);
+  border: none;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  color: #fff;
+  letter-spacing: 1px;
+  appearance: none;
+}
+
+.calendar-options {
+  margin: 0;
+  margin-top: 10px;
+  padding: 0;
+  position: absolute;
+  top: 20px;
+  width: 65px;
+  height: 0;
+  overflow-y: scroll;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  transition: 0.3s all ease-in;
+}
+
+.calendar-options::-webkit-scrollbar {
+  display: none;
+}
+
+.calendar-slide {
+  height: 120px;
+}
+
+.calendar-options li {
+  padding: 6px;
+  box-sizing: border-box;
+  list-style: none;
+  border-top: 1px solid #ccc;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.calendar-options li:hover {
+  background: rgba(0, 0, 0, 1);
+}
+
+.calendar-options .select {
+  background: #296eff;
+}
